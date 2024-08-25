@@ -12,7 +12,6 @@ import {
 import React from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { z } from "zod";
-import { formSchema } from "../create/page";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -26,6 +25,7 @@ import objectSupport from "dayjs/plugin/objectSupport";
 import "dayjs/locale/pt-br";
 import StatusBadge from "@/components/status-badge";
 import PriorityBadgeForm from "@/components/priority-badge-form";
+import formSchema from "@/lib/formSchema";
 
 const EditTaskButton = ({ task }: { task: Task }) => {
   const router = useRouter();

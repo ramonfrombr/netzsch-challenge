@@ -14,7 +14,7 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -22,26 +22,7 @@ import { Priority, Status } from "@prisma/client";
 import ButtonBackToTasks from "../_components/button-back-to-tasks";
 import StatusBadge from "@/components/status-badge";
 import PriorityBadgeForm from "@/components/priority-badge-form";
-
-export const formSchema = z.object({
-  name: z
-    .string()
-    .min(1, {
-      message: "Task name is required",
-    })
-    .max(50, {
-      message: "Task name too long (maximum 50 characters)",
-    }),
-  description: z
-    .string()
-    .max(500, {
-      message: "Description is too long (maximum 500 characters)",
-    })
-    .optional(),
-  status: z.nativeEnum(Status),
-  priority: z.nativeEnum(Priority),
-  dueDate: z.custom<Dayjs>((val) => val instanceof dayjs, "Invalid date"),
-});
+import formSchema from "@/lib/formSchema";
 
 const TaskCreatePage = () => {
   const router = useRouter();
