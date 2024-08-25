@@ -5,7 +5,7 @@ const { PrismaClient } = require("@prisma/client");
 
 const database = new PrismaClient();
 
-function randomIntFromInterval(min, max) {
+function randomIntFromInterval(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
