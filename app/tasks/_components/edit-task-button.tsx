@@ -25,7 +25,7 @@ import { Priority, Status, Task } from "@prisma/client";
 import objectSupport from "dayjs/plugin/objectSupport";
 import "dayjs/locale/pt-br";
 import StatusBadge from "@/components/status-badge";
-import PriorityBadge from "@/components/priority-nadge";
+import PriorityBadgeForm from "@/components/priority-badge-form";
 
 const EditTaskButton = ({ task }: { task: Task }) => {
   const router = useRouter();
@@ -141,7 +141,7 @@ const EditTaskButton = ({ task }: { task: Task }) => {
                   >
                     {Object.values(Priority).map((priority) => (
                       <MenuItem key={priority} value={priority}>
-                        <PriorityBadge priority={priority} />
+                        <PriorityBadgeForm priority={priority} />
                       </MenuItem>
                     ))}
                   </Select>

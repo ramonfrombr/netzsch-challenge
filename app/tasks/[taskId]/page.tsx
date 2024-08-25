@@ -7,11 +7,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { redirect } from "next/navigation";
 import StatusBadge from "@/components/status-badge";
-import PriorityBadge from "@/components/priority-nadge";
 import { Typography } from "@mui/material";
 import DeleteTaskButton from "../_components/delete-task-button";
 import ButtonBackToTasks from "../_components/button-back-to-tasks";
 import EditTaskButton from "../_components/edit-task-button";
+import PriorityBadgeForm from "@/components/priority-badge-form";
 
 const TaskIdPage = async ({ params }: { params: { taskId: string } }) => {
   const task = await db.task.findUnique({
@@ -71,7 +71,7 @@ const TaskIdPage = async ({ params }: { params: { taskId: string } }) => {
                 Priority:
               </TableCell>
               <TableCell align="left">
-                <PriorityBadge priority={task.priority} />
+                <PriorityBadgeForm priority={task.priority} />
               </TableCell>
             </TableRow>
             <TableRow
@@ -84,7 +84,7 @@ const TaskIdPage = async ({ params }: { params: { taskId: string } }) => {
                 {task?.description ? (
                   task?.description
                 ) : (
-                  <span className="italic">No description</span>
+                  <span className="italic text-gray-500">No description</span>
                 )}
               </TableCell>
             </TableRow>

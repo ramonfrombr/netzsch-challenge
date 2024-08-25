@@ -1,25 +1,31 @@
-import { Task } from "@prisma/client";
+import { Status, Task } from "@prisma/client";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import PriorityBadge from "@/components/priority-nadge";
+import PriorityBadge from "@/components/priority-badge";
 import Link from "next/link";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { Search, X } from "lucide-react";
+import StatusBadge from "@/components/status-badge";
 
 const TaskSummary = ({
   tasks,
   expanded,
   heading,
+  status,
 }: {
   tasks: Task[];
   expanded?: boolean;
+  status?: Status;
   heading: string;
 }) => {
   const [search, setSearch] = useState("");
+
+  const headingPluralized =
+    tasks.length > 1 ? heading : heading.substring(0, heading.length - 1);
 
   const filteredTasks =
     search == ""
@@ -42,10 +48,11 @@ const TaskSummary = ({
           className="hover:bg-gray-100"
         >
           <Typography className=" text-gray-700 flex items-center text-sm">
-            <span className="bg-slate-700 text-white rounded mr-3 h-4 w-4 flex items-center justify-center font-semibold">
+            <span className="bg-slate-700 border px-2 py-[2px] rounded-[4px] font-semibold text-xs text-white mr-1">
               {tasks.length}
             </span>
-            <span>{heading}</span>
+            {status && <StatusBadge status={status} />}
+            <span className="ml-1 font-semibold">{headingPluralized}</span>
           </Typography>
         </AccordionSummary>
         <AccordionDetails className="p-1">
@@ -76,7 +83,7 @@ const TaskSummary = ({
             <div className="bg-white p-2 flex transition duration-200 text-sm">
               <span className="min-w-[73px] text-gray-500">Due Date</span>
               <span className="min-w-16 text-gray-500">Priority</span>
-              <span className="text-gray-500">Task</span>
+              <span className="text-gray-500">Task Name</span>
             </div>
           )}
 

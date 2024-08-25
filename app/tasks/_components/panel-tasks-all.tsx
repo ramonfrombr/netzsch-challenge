@@ -1,5 +1,5 @@
 import CustomTabPanel from "./custom-tab-panel";
-import { Task } from "@prisma/client";
+import { Status, Task } from "@prisma/client";
 import TaskSummary from "./task-summary";
 import TaskChart from "./task-chart";
 
@@ -35,18 +35,24 @@ const PanelTasksAll = ({ value, index, tasks }: PanelTasksAllProps) => {
           <TaskSummary
             expanded={true}
             tasks={tasks.newTasks}
-            heading="New Tasks"
+            heading=""
+            status={Status.NEW}
           />
         )}
         {tasks.inProgressTasks.length != 0 && (
           <TaskSummary
             expanded={true}
             tasks={tasks.inProgressTasks}
-            heading="In Progress Tasks"
+            heading=""
+            status={Status.IN_PROGRESS}
           />
         )}
         {tasks.completedTasks.length != 0 && (
-          <TaskSummary tasks={tasks.completedTasks} heading="Completed Tasks" />
+          <TaskSummary
+            tasks={tasks.completedTasks}
+            heading=""
+            status={Status.COMPLETED}
+          />
         )}
       </main>
     </CustomTabPanel>

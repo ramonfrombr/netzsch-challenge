@@ -21,7 +21,7 @@ import toast from "react-hot-toast";
 import { Priority, Status } from "@prisma/client";
 import ButtonBackToTasks from "../_components/button-back-to-tasks";
 import StatusBadge from "@/components/status-badge";
-import PriorityBadge from "@/components/priority-nadge";
+import PriorityBadgeForm from "@/components/priority-badge-form";
 
 export const formSchema = z.object({
   name: z
@@ -135,7 +135,7 @@ const TaskCreatePage = () => {
               >
                 {Object.values(Priority).map((priority) => (
                   <MenuItem key={priority} value={priority}>
-                    <PriorityBadge priority={priority} />
+                    <PriorityBadgeForm priority={priority} />
                   </MenuItem>
                 ))}
               </Select>
