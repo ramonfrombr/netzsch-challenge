@@ -67,7 +67,7 @@ const TaskCreatePage = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <Typography variant="h4" gutterBottom>
-            Create a task
+            Create Task
           </Typography>
           <TextField
             label="Task name"

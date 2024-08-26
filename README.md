@@ -1,6 +1,6 @@
 # Task Management App
 
-This is a task management app application built for Netzsch admission process coding challenge
+This is a task management app application built for Netzsch admission process coding challenge.
 
 ## Demo
 
@@ -30,8 +30,9 @@ This is a task management app application built for Netzsch admission process co
 
 ## Screenshots
 
-![Desktop-1](https://github.com/ramonfrombr/netsch-challenge/blob/main/screenshots/image01.jpg)
-![Desktop-2](https://github.com/ramonfrombr/netsch-challenge/blob/main/screenshots/image02.jpg)
+![Desktop-1](https://github.com/ramonfrombr/netzsch-challenge/blob/main/screenshots/image01.png)
+![Desktop-2](https://github.com/ramonfrombr/netzsch-challenge/blob/main/screenshots/image02.png)
+![Desktop-2](https://github.com/ramonfrombr/netzsch-challenge/blob/main/screenshots/image03.png)
 
 ## Usage
 
