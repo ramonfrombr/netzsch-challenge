@@ -27,7 +27,7 @@ import StatusBadge from "@/components/status-badge";
 import PriorityBadgeForm from "@/components/priority-badge-form";
 import formSchema from "@/lib/formSchema";
 
-const EditTaskButton = ({ task }: { task: Task }) => {
+const EditTaskInModalButton = ({ task }: { task: Task }) => {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -73,7 +73,7 @@ const EditTaskButton = ({ task }: { task: Task }) => {
   return (
     <>
       <Button onClick={handleOpen} color="primary" variant="contained">
-        Edit
+        Edit in modal
       </Button>
       <Modal
         open={open}
@@ -182,4 +182,4 @@ const EditTaskButton = ({ task }: { task: Task }) => {
   );
 };
 
-export default EditTaskButton;
+export default EditTaskInModalButton;
