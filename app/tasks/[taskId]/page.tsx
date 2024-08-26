@@ -7,11 +7,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { redirect } from "next/navigation";
 import StatusBadge from "@/components/status-badge";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import DeleteTaskButton from "../_components/delete-task-button";
 import ButtonBackToTasks from "../_components/button-back-to-tasks";
-import EditTaskButton from "../_components/edit-task-button";
+import EditTaskInModalButton from "../_components/edit-task-in-modal-button";
 import PriorityBadgeForm from "@/components/priority-badge-form";
+import Link from "next/link";
 
 const TaskIdPage = async ({ params }: { params: { taskId: string } }) => {
   const task = await db.task.findUnique({
@@ -27,9 +28,14 @@ const TaskIdPage = async ({ params }: { params: { taskId: string } }) => {
     <div>
       <ButtonBackToTasks />
 
-      <div className="mb-5 flex gap-2 flex-row-reverse">
+      <div className="mb-5 flex gap-2 flex-col items-end sm:flex-row sm:justify-end">
+        <Link href={`/tasks/${task.id}/edit`}>
+          <Button variant="contained" color="primary">
+            Edit in page
+          </Button>
+        </Link>
+        <EditTaskInModalButton task={task} />
         <DeleteTaskButton taskId={params.taskId} />
-        <EditTaskButton task={task} />
       </div>
       <TableContainer className="border shadow" component={Paper}>
         <Table size="small" aria-label="a dense table">

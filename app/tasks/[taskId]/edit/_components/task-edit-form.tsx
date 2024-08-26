@@ -1,4 +1,3 @@
-"use client";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,22 +18,37 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { Priority, Status } from "@prisma/client";
-import ButtonBackToTasks from "../_components/button-back-to-tasks";
 import StatusBadge from "@/components/status-badge";
 import PriorityBadgeForm from "@/components/priority-badge-form";
 import formSchema from "@/lib/formSchema";
+import Link from "next/link";
+import { useState } from "react";
 
-const TaskCreatePage = () => {
+interface TaskEditFormProps {
+  task: {
+    id: string;
+    name: string;
+    description: string;
+    status: Status;
+    priority: Priority;
+    dueDate: Date;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+}
+
+const TaskEditForm = ({ task }: TaskEditFormProps) => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   type FormData = z.infer<typeof formSchema>;
 
   const initialData = {
-    name: "",
-    description: "",
-    status: Status.NEW,
-    priority: Priority.LOW,
-    dueDate: dayjs(),
+    name: task.name,
+    description: task.description,
+    status: task.status,
+    priority: task.priority,
+    dueDate: dayjs(task.dueDate),
   };
 
   const {
@@ -49,9 +63,9 @@ const TaskCreatePage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.post(`/api/tasks`, values);
-      router.push(`/tasks`);
-      toast.success("Task created");
+      await axios.patch(`/api/tasks/${task.id}`, values);
+      router.push(`/tasks/${task.id}`);
+      toast.success("Task updated");
       router.refresh();
     } catch {
       toast.error("Something went wrong");
@@ -60,14 +74,19 @@ const TaskCreatePage = () => {
 
   return (
     <div>
-      <ButtonBackToTasks />
+      <div className="mb-5">
+        <Link href={`/tasks/${task.id}`}>
+          <Button variant="contained">Cancel</Button>
+        </Link>
+      </div>
+
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={"pt-br"}>
         <form
           className="flex flex-col bg-white p-5 border shadow"
           onSubmit={handleSubmit(onSubmit)}
         >
           <Typography variant="h4" gutterBottom>
-            Create Task
+            Edit Task
           </Typography>
           <TextField
             label="Task name"
@@ -136,6 +155,16 @@ const TaskCreatePage = () => {
                   onChange={(date) => {
                     field.onChange(date);
                   }}
+                  open={open}
+                  onClose={() => setOpen(false)}
+                  slotProps={{
+                    textField: {
+                      onClick: () => setOpen(true),
+                    },
+                    openPickerButton: {
+                      onClick: () => setOpen(true),
+                    },
+                  }}
                 />
               );
             }}
@@ -147,7 +176,7 @@ const TaskCreatePage = () => {
             variant="contained"
             color="primary"
           >
-            CREATE
+            UPDATE
           </Button>
         </form>
       </LocalizationProvider>
@@ -155,4 +184,4 @@ const TaskCreatePage = () => {
   );
 };
 
-export default TaskCreatePage;
+export default TaskEditForm;

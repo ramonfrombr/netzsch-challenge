@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Task Management App
 
-## Getting Started
+This is a task management app application built for Netzsch admission process coding challenge.
 
-First, run the development server:
+## Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[Deployed on Vercel (frontend+api) & MongoDB (database)](https://netzsch-challenge.vercel.app/)
+
+## Built using
+
+#### Frontend
+
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript with Data Types
+- [ReactJS](https://react.dev/) - Frontend library
+- [NextJS](https://nextjs.org/) - Frontend framework
+- [MaterialUI](https://mui.com/) - UI Library
+- [TailwindCSS](https://tailwindcss.com/) - CSS utility library
+- [MongoDB](https://www.mongodb.com/) - NoSQL database
+- [Prisma](https://www.prisma.io/) - Database ORM
+- [zod](https://zod.dev/) - Schema validation tool
+- [React Hook Form](https://react-hook-form.com/) - Form validation
+- [react-hot-toast](https://react-hot-toast.com/) - React toast notifications
+
+## Features
+
+- CRUD tasks
+- Display task statistics with pie charts
+- Filter tasks by name
+- Group task groups in tabs (all tasks, upcoming tasks, and overdue tasks) for easier navigation
+
+## Screenshots
+
+![Desktop-1](https://github.com/ramonfrombr/netzsch-challenge/blob/main/screenshots/image01.png)
+![Desktop-2](https://github.com/ramonfrombr/netzsch-challenge/blob/main/screenshots/image02.png)
+![Desktop-2](https://github.com/ramonfrombr/netzsch-challenge/blob/main/screenshots/image03.png)
+
+## Usage
+
+#### Env variable:
+
+Create a .env file in the root folder and add the following:
+
+```
+DATABASE_URL="Your mongodb database URI"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Visit `http://localhost:3000/` to open the application

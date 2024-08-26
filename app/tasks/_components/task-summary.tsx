@@ -34,7 +34,6 @@ const TaskSummary = ({
           task.name.toLowerCase().includes(search.toLowerCase())
         );
 
-  console.log("TaskSummary rendered");
   return (
     <div className="border overflow-hidden shadow">
       <Accordion
