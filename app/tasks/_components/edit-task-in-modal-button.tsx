@@ -30,6 +30,8 @@ import formSchema from "@/lib/formSchema";
 const EditTaskInModalButton = ({ task }: { task: Task }) => {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
+  const [openDatePicker, setOpenDatePicker] = React.useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -160,6 +162,16 @@ const EditTaskInModalButton = ({ task }: { task: Task }) => {
                       inputRef={field.ref}
                       onChange={(date) => {
                         field.onChange(date);
+                      }}
+                      open={openDatePicker}
+                      onClose={() => setOpenDatePicker(false)}
+                      slotProps={{
+                        textField: {
+                          onClick: () => setOpenDatePicker(true),
+                        },
+                        openPickerButton: {
+                          onClick: () => setOpenDatePicker(true),
+                        },
                       }}
                     />
                   );

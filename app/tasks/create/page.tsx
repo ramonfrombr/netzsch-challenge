@@ -23,9 +23,11 @@ import ButtonBackToTasks from "../_components/button-back-to-tasks";
 import StatusBadge from "@/components/status-badge";
 import PriorityBadgeForm from "@/components/priority-badge-form";
 import formSchema from "@/lib/formSchema";
+import { useState } from "react";
 
 const TaskCreatePage = () => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   type FormData = z.infer<typeof formSchema>;
 
@@ -135,6 +137,16 @@ const TaskCreatePage = () => {
                   inputRef={field.ref}
                   onChange={(date) => {
                     field.onChange(date);
+                  }}
+                  open={open}
+                  onClose={() => setOpen(false)}
+                  slotProps={{
+                    textField: {
+                      onClick: () => setOpen(true),
+                    },
+                    openPickerButton: {
+                      onClick: () => setOpen(true),
+                    },
                   }}
                 />
               );
