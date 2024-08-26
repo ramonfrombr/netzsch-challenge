@@ -36,7 +36,17 @@ This is a task management app application built for Netzsch admission process co
 
 ## Usage
 
-#### Env variable:
+Run the following command to clone the repository:
+
+```
+git clone git@github.com:ramonfrombr/netzsch-challenge.git
+```
+
+Run the following command to move to the repository root folder:
+
+```
+cd netzsch-challenge
+```
 
 Create a .env file in the root folder and add the following:
 
@@ -44,11 +54,16 @@ Create a .env file in the root folder and add the following:
 DATABASE_URL="Your mongodb database URI"
 ```
 
-Run the development server:
+Install dependencies:
 
 ```
 npm install
+```
+
+Install dependencies and run the development server:
+
+```
 npm run dev
 ```
 
-Visit `http://localhost:3000/` to open the application
+Finally, visit `http://localhost:3000/` to open the application
